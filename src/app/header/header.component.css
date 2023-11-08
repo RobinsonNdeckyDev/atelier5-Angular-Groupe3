@@ -1,0 +1,26 @@
+header{
+    background-color: #007DFE;
+    margin-bottom: 4%;
+}
+
+
+.btn-supprimer {
+    background-color: red;
+    color: white !important;
+    font-weight: bold;
+}
+
+.btn-supprimer a{
+    color: white;
+}
+
+
+.btn-supprimer:hover {
+    background-color: blue;
+    color: red !important;
+    transition: 1s ease;
+}
+
+.btn-supprimer:hover a{
+    color: white;
+}

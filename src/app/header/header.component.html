@@ -1,0 +1,62 @@
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light fw-bold" routerLink="/liste">Gestion Contacts</a>
+      <button class="navbar-toggler btn-light" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Gestion Contacts</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="/Profil">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/">Lien</a>
+            </li>
+          </ul>
+
+          <button type="button" class="btn btn-supprimer mt-4">
+            <a routerLink="/connexion" class="text-decoration-none fw-bold">Déconnexion</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<!-- <nav class="navbar fixed-top header-nav">
+    <div class="container-fluid nav-bouton">
+      <img class="img-logo" src="assets/logo1.jpeg" alt="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header titre">
+            <img class="img-logo" src="assets/logo1.jpeg" alt="">
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body item-li">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 text-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Contacts</a>
+            </li>
+            <div class="hr-li"></div>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Deconnexion</a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+</nav> -->
+
+<div class="espace"></div>

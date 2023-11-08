@@ -1,0 +1,40 @@
+.formulaireContainer {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.formulaireContainer .row1 {
+    padding: 0 !important;
+    border: 1px solid #007DFE;
+}
+
+.forms h2 {
+    color: #007DFE;
+    margin-bottom: 3%;
+}
+
+.textInscrit {
+    color: #007DFE;
+    cursor: pointer;
+}
+
+.textInscrit:hover {
+    color: red;
+    transition: 1s ease;
+}
+
+.btnLogin {
+    background-color: #007DFE;
+}
+
+.trait {
+    border: 2px solid #007DFE;
+    width: 25%;
+    margin: auto;
+    margin-bottom: 4%;
+}
+
+.formulaireContainer .image img {
+    width: 100%;
+    height: 100%;
+}

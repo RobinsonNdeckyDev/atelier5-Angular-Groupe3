@@ -1,0 +1,263 @@
+<app-header></app-header>
+<div class="container">
+    <!-- Modal mot de passe oublié  -->
+    <!-- Button trigger modal -->
+    <div *ngIf="choice">
+        <h3 class="fw-bold titreUs shadow p-2 text-center mb-5">Liste des contacts de {{userFound.prenom}} {{userFound.nom}}</h3>
+        <div class="d-flex justify-content-between mb-5">
+            <div class="col-md-6">
+                <button type="button" class="btn active btnAdd" data-bs-toggle="modal" data-bs-target="#modalAjoutContact">Ajouter un contact</button>
+                <button type="button" class="btn active btn-corbeille notactive ms-3" (click)="listChoice()">Voir corbeille </button>
+            </div>
+    
+            <div class="input-group">
+                <input type="text" name="search" class="form-control">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+            </div>
+    
+        </div>
+    
+        <!-- La liste des contacts  -->
+        <div class="list-contact" *ngFor="let contactUserFound of contactsUserFound ">
+            <div *ngIf="contactUserFound.etatContact == 1">
+                <div class="card  shadow-sm ">
+                    <div class="card-body contact-item">
+                        <div class="row g-4">
+
+                            <div class="col-md-3">
+                                <img src="{{contactUserFound.photoContact}}" class="img-fluid" alt="...">
+                            </div>
+
+                            <div class="col-md-9">
+
+                                <h4 class="card-title titreCa text-center mb-5 fw-bold my-3">{{contactUserFound.nomContact}} {{contactUserFound.prenomContact}}
+                                </h4>
+
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <h5 class="titreDet">Détails</h5>
+                                        <p class="card-text"><span class="fw-bold">Téléphone:</span> {{contactUserFound.telephoneContact}}</p>
+                                        <p class="card-text"><span class="fw-bold">Email:</span> {{contactUserFound.emailContact}}</p>
+                                        <p class="card-text"><span class="fw-bold">Description:</span> {{contactUserFound.descriptionContact}}</p>
+                                        <p class="card-text" *ngIf="contactUserFound.updatedAt !=''"><span class="fw-bold">Dernière modification:</span>
+                                            {{contactUserFound.updatedAt | date:"dd/MM/yyyy 'à' hh:mm a"}}</p>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <h5 class="titreDet">Actions</h5>
+                                        <div class="d-grid gap-2 d-md-block  btns mt-3">
+                                            <button type="button" class="btn active btn-modifier me-3" data-bs-toggle="modal" data-bs-target="#modalModifierContact"
+                                                (click)="chargeInfoModif(contactUserFound)">modifier</button>
+                                            <button class="btn btn-supprimer active" type="button" (click)="supprimer(contactUserFound.idContact)">supprimer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Fin liste des contacts  -->
+
+    <!-- Liste des contacts supprimés  -->
+    <div *ngIf="!choice">
+        <h1 class="fw-bold text-center mb-5">Liste des contacts supprimer de {{userFound.prenom}} {{userFound.nom}}</h1>
+        <div class="d-flex justify-content-between mb-5">
+            <div class="col-md-6">
+                <button type="button" class="btn active btnAdd " (click)="listChoice()">Liste contacts</button>
+                <button type="button" class="btn btn-corbeille active  ms-3" (click)="viderCorbeille()"  >Vider la corbeille </button>
+            </div>
+    
+            <div class="input-group">
+                <input type="text" name="filterValue" class="form-control" >
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+            </div>
+    
+        </div>
+    
+        <!-- La liste des contacts  de la corbeille -->
+        <div class="list-contact" *ngFor="let contactUserFound of contactsUserFound ">
+            <div *ngIf="contactUserFound.etatContact == 0">
+                <div class="card  shadow ">
+                    <div class="card-body contact-item">
+                        <div class="row g-4">
+
+                            <div class="col-md-3">
+                                <img src="{{contactUserFound.photoContact}}" class="img-fluid" alt="...">
+                            </div>
+
+                            <div class="col-md-9">
+
+                                <h4 class="card-title titreCa text-center mb-5 fw-bold my-3">{{contactUserFound.nomContact}} {{contactUserFound.prenomContact}}</h4>
+
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <h5 class="titreDet">Détails</h5>
+                                        <p class="card-text"><span class="fw-bold">Téléphone:</span> {{contactUserFound.telephoneContact}}</p>
+                                        <p class="card-text"><span class="fw-bold">Email:</span> {{contactUserFound.emailContact}}</p>
+                                        <p class="card-text"><span class="fw-bold">Description:</span> {{contactUserFound.descriptionContact}}</p>
+                                        <p class="card-text" *ngIf="contactUserFound.updatedAt !=''"><span class="fw-bold">Dernière modification:</span>
+                                            {{contactUserFound.updatedAt | date:"dd/MM/yyyy 'à' hh:mm a"}}</p>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <h5 class="titreDet">Actions</h5>
+                                        <div class="d-flex gap-2 d-md-block  mt-3">
+                                            <button class="btn btn-supprimer active me-3" (click)="suppressionDefinitive(contactUserFound.idContact)">
+                                                Supprimer
+                                            </button>
+                                            <button class="btn active btn-modifier" (click)="restaurer(contactUserFound.idContact)">restaurer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <!-- Fin liste des contacts supprimés  -->
+    <div>
+
+    </div>
+</div>
+
+
+<!-- Modal ajouter un contact -->
+<div class="modal fade" id="modalAjoutContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter un contact</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="mb-4">
+                            <label for="inputName" class="form-label fw-bold">Nom <span class="champObligatoire">*</span></label>
+                            <input type="text" name="nom" class="form-control shadow" id="inputName" placeholder="Votre nom..." [(ngModel)]="nom">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="inputSurname" class="form-label fw-bold">Prénom <span class="champObligatoire">*</span></label>
+                            <input type="text" name="prenom" class="form-control shadow" id="inputSurname" placeholder="Votre prénom..."
+                                [(ngModel)]="prenom">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="inputEmail" class="form-label fw-bold">Adresse email <span class="champObligatoire">*</span></label>
+                            <input type="email" name="email" class="form-control shadow" id="inputEmail" placeholder="Votre adresse email..."
+                                [(ngModel)]="email">
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="mb-4">
+                            <label for="inputPhone" class="form-label fw-bold">Téléphone <span class="champObligatoire">*</span></label>
+                            <input type="tel" name="number" class="form-control shadow" id="inputPhone" placeholder="Votre numéro de téléphone..."
+                                [(ngModel)]="telephone">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="inputPhotoUrl" class="form-label fw-bold">Adresse de l'image <span
+                                    class="champObligatoire">*</span></label>
+                            <input type="text" name="photoURL" class="form-control shadow" id="inputPhotoUrl"
+                                placeholder="L'adresse valide de l'image..." [(ngModel)]="photoURL">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="exampleFormControlTextarea1" class="form-label fw-bold">Description <span
+                                    class="champObligatoire">*</span></label>
+                            <textarea class="form-control shadow" name="description" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Donner une déscription..." [(ngModel)]="description"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn active btnAdd " (click)="ajouter()">Ajouter</button>
+                    <button type="button" class="btn active btn-supprimer" data-bs-dismiss="modal">Annuler</button>
+                </div>
+
+            </form>
+        </div>
+        
+        </div>
+    </div>
+</div>
+<!-- Fin modal ajouter un contact -->
+
+<!-- Modal modifier un contact -->
+<div class="modal fade" id="modalModifierContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier le contact</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="mb-4">
+                            <label for="inputName" class="form-label fw-bold">Nom <span class="champObligatoire">*</span></label>
+                            <input type="text" name="nom" class="form-control shadow" id="inputName" placeholder="Votre nom..." [(ngModel)]="nom">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="inputSurname" class="form-label fw-bold">Prénom <span class="champObligatoire">*</span></label>
+                            <input type="text" name="prenom" class="form-control shadow" id="inputSurname" placeholder="Votre prénom..."
+                                [(ngModel)]="prenom">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="inputEmail" class="form-label fw-bold">Adresse email <span class="champObligatoire">*</span></label>
+                            <input type="email" name="email" class="form-control shadow" id="inputEmail" placeholder="Votre adresse email..."
+                                [(ngModel)]="email">
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="mb-4">
+                            <label for="inputPhone" class="form-label fw-bold">Téléphone <span class="champObligatoire">*</span></label>
+                            <input type="tel" name="number" class="form-control shadow" id="inputPhone" placeholder="Votre numéro de téléphone..."
+                                [(ngModel)]="telephone">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="inputPhotoUrl" class="form-label fw-bold">Adresse de l'image <span
+                                    class="champObligatoire">*</span></label>
+                            <input type="text" name="photoURL" class="form-control shadow" id="inputPhotoUrl"
+                                placeholder="L'adresse valide de l'image..." [(ngModel)]="photoURL">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="exampleFormControlTextarea1" class="form-label fw-bold">Description <span
+                                    class="champObligatoire">*</span></label>
+                            <textarea class="form-control shadow" name="description" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Donner une déscription..." [(ngModel)]="description"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btnAdd active" (click)="modifier()">Confirmer</button>
+                    <button type="button" class="btn active btn-supprimer" data-bs-dismiss="modal">Annuler</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- Fin modal modifier un contact -->

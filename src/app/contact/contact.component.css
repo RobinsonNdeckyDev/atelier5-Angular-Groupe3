@@ -1,0 +1,36 @@
+.titreUs{
+    border-bottom: 5px solid #007DFE;
+}
+
+.btnAdd,.btn-modifier{
+    background-color: #007DFE;
+    color: white;
+    font-weight: bold;
+}
+
+.btnAdd:hover,.btn-modifier:hover{
+    background-color: white;
+    transition: 1s ease;
+    color: #007DFE;
+}
+
+.btn-corbeille,.btn-supprimer{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-corbeille:hover,.btn-supprimer:hover{
+    background-color: white;
+    color: red;
+    transition: 1s ease;
+}
+
+.titreCa{
+    color: #007DFE;
+}
+
+.titreDet{
+    color: #007DFE;
+    font-weight: 700;
+}
