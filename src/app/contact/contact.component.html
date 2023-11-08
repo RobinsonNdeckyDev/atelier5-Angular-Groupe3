@@ -64,7 +64,7 @@
 
     <!-- Liste des contacts supprimés  -->
     <div *ngIf="!choice">
-        <h1 class="fw-bold text-center mb-5">Liste des contacts supprimer de {{userFound.prenom}} {{userFound.nom}}</h1>
+        <h3 class="fw-bold titreUs text-center p-2 mb-5">Liste des contacts supprimer de {{userFound.prenom}} {{userFound.nom}}</h3>
         <div class="d-flex justify-content-between mb-5">
             <div class="col-md-6">
                 <button type="button" class="btn active btnAdd " (click)="listChoice()">Liste contacts</button>
@@ -86,7 +86,7 @@
                         <div class="row g-4">
 
                             <div class="col-md-3">
-                                <img src="{{contactUserFound.photoContact}}" class="img-fluid" alt="...">
+                                <img src="{{contactUserFound.photoContact}}" class="img-fluid imgCt" alt="...">
                             </div>
 
                             <div class="col-md-9">

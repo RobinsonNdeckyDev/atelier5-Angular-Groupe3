@@ -1,3 +1,6 @@
+.forms{
+    background-color: #007DFE;
+}
 .formulaireContainer {
     margin-top: 5%;
     margin-bottom: 5%;
@@ -9,22 +12,35 @@
 }
 
 .forms h2 {
-    color: #007DFE;
+    color: white;
     margin-bottom: 3%;
 }
 
+.forms label{
+    color: white;
+}
+
 .textInscrit {
-    color: #007DFE;
+    color: whitesmoke;
     cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .textInscrit:hover {
+    background-color: whitesmoke;
     color: red;
     transition: 1s ease;
 }
 
 .btnLogin {
-    background-color: #007DFE;
+    background-color: white;
+    color: #007DFE;
+}
+
+.btnLogin:hover{
+    background-color: whitesmoke;
+    color: red;
 }
 
 .trait {

@@ -12,6 +12,11 @@ const routes: Routes = [
 
   // Route vers la page de contact 
   { path: 'contact/:id', component: ContactComponent},
+
+  { path: 'connexion', component:AuthentificationComponent},
+
+  { path: 'profile', component: AuthentificationComponent},
+
 ];
 
 @NgModule({
